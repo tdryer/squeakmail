@@ -11,7 +11,7 @@ use std::thread;
 use std::time::Duration;
 
 use attohttpc;
-use clap::{crate_version, App, Arg, SubCommand};
+use clap::{crate_version, App, AppSettings, Arg, SubCommand};
 use derive_more::{Display, From};
 use lettre::sendmail::SendmailTransport;
 use lettre::{EmailAddress, SendableEmail, Transport};
@@ -156,6 +156,7 @@ fn get_args() -> Args {
         .join("squeakmail.db");
     let matches = App::new("SqueakMail")
         .version(crate_version!())
+        .setting(AppSettings::SubcommandRequiredElseHelp)
         .arg(
             Arg::with_name("config")
                 .long("config")
