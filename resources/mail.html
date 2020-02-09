@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{subject}}</title>
+</head>
+<body>
+  {%- for feed in feeds %}
+  <h2><a href="{{feed.feed.link}}" target="_blank" rel="noopener">{{feed.feed.title}}</a></h2>
+  <ol style="list-style-type: none; padding-left: 0;">
+    {%- for item in feed.items %}
+    <li style="margin-bottom: 1em;">
+      <a href="{{item.link}}" target="_blank" rel="noopener">{{item.title}}</a>
+      {%- if item.comments_link %}
+      –
+      <a href="{{item.comments_link}}" target="_blank" rel="noopener">comments</a>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ol>
+  {%- endfor %}
+</body>
+</html>
